@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxwithrohit</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+         
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header-logo a {
+            font-size: 30px;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .header-nav-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-nav li {
+            margin-right: 40px;
+            position: relative;
+        }
+
+        .header-nav li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .header-nav li.open ul {
+            display: block;
+        }
+
+        .header-nav li a {
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .header-nav li.dropdown > a::after {
+            content: '\25BA'; /* Right arrow */
+            font-size: 12px;
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+
+        .header-nav li.open.dropdown > a::after {
+            content: '\25BC'; /* Down arrow */
+            transform: translateY(-0%) rotate(3deg);
+        }
+
+        .header-nav .dropdown ul {
+            padding: 0;
+            text-align: left;
+            width: 290px;
+            background-color: #ffffff;
+        }
+
+        .header-nav .dropdown ul li {
+            padding: 10px 0;
+        }
+
+        .header-nasv .dropdown ul li:hover {
+            background-color: #ffffff; /* Change background color on hover */
+        }
+
+        .header-nav .dropdown ul li:last-child {
+            border-bottom: none;
+        }
+
+        .call-now-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .call-now-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: left;
+            margin-top: 20px;
+            background-color: #fff; /* White background color for footer */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+        }
+        
+        .footer p {
+            margin: 0;
+        }
+
+        .footer h4 {
+            text-align: center;
+        }
+
+        /* Service list styles */
+        #service-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .service-list-item {
+            width: calc(20% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background-color: #ffffff; /* Change background color */
+            text-align: center; /* Align text in the middle */
+        }
+
+        .service-list-item:hover {
+            background-color: #f0f0f0; /* Change background color on hover */
+        }
+
+        body {
+            background-color: #f5f5f5; /* Whitish-gray background color */
+            margin: 20px; /* Add margin to create a boxed layout */
+            padding: 20px; /* Add padding to create a boxed layout */
+            max-width: 1200px; /* Limit maximum width of the page */
+            margin: 0 auto; /* Center the page horizontally */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+        }
+        
+        main {
+            background-color: #fff; /* White background color for main content */
+            padding: 20px; /* Add padding to separate main content from the edges */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+        }
+
+        /* Header styles */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fff; /* White background color for header */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+            margin-bottom: 20px; /* Add margin to separate header from main content */
+        }
+        .contact-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .left-contact {
+            max-width: 500px;
+            font-size: 10px;
+        }
+
+        .right-contact {
+            max-width: 600px;
+        }
+
+        .invisible-line {
+            width: 1px;
+            height: 100%;
+            background-color: transparent;
+            border-left: 1px solid transparent;
+            margin: 0 30px;
+        }
+
+        .contact-section {
+            background-size: cover;
+            color: #000000;
+            padding: 50px;
+            text-align: left;
+        }
+        
+        .left-contact p {
+            font-size: 10px; /* Decreased font size for paragraph */
+            margin-top: 20px;
+        }
+
+        .contact-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .chat-button {
+            background-color: #c0b7b7;
+            color: #000000;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            margin-right: 50px;
+        }
+
+        .call-button {
+            background-color: #c0b7b7;
+            color: #000000;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            margin-right: 50px;
+        }
+
+        .contact-section p {
+            font-size:20px;
+            margin-top: 20px;
+        }
+
+        .contact-section a {
+            color: #000000;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-logo">
+        <a href="index.html"><b>TAXWITHROHIT</b></a>
+    </div>
+    <div class="header-nav-wrapper">
+        <nav class="header-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown" onmouseenter="toggleDropdown(this)" onmouseleave="toggleDropdown(this)">
+                    <a href="#" onclick="toggleDropdown(this)">Services</a>
+                    <ul>
+                        <li><a href="gst.html" class="service-list-item">GST</a></li>
+                        <li><a href="itr.html" class="service-list-item">ITR</a></li>
+                        <li><a href="pm.html" class="service-list-item">Payroll Management</a></li>
+                        <li><a href="cg.html" class="service-list-item">Company Registration</a></li>
+                        <li><a href="tds.html" class="service-list-item">TDS</a></li>
+                        <li><a href="mr.html" class="service-list-item">MSME Registration</a></li>
+                        <li><a href="fr.html" class="service-list-item">FSSAI Registration</a></li>
+                        <li><a href="bas.html" class="service-list-item">Bookkeeping & Accounting Services</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </div>
+    <button class="call-now-button" onclick="callNow()">Call Now</button>
+    <button class="call-now-button" onclick="chatNow()">Chat Now</button>
+</header>
+
+<main class="main-content">
+    <section class="contact-section" id="contact">
+            <div class="contact-container">
+                <div class="left-contact">
+                    <hr>
+                    <h2>Contact Us</h2>
+                    <hr>
+                    <p>If you are considering any of our comprehensive services or have specific needs you'd like addressed, we warmly encourage you to reach out to us. Our dedicated team is here to provide personalized guidance and support tailored to your requirements. Don't hesitate; get in touch today and let us help you navigate your financial journey with confidence and expertise</p>
+                </div>
+                <div class="right-contact">
+                    <a href="tel:+919910737897" class="call-button"><img src="call.png" alt="Call Now" style="width: 100px; height: auto;"></a>
+                    <a href="https://wa.me/+919910737897" class="chat-button"><img src="chat.png" alt="Chat with Us" style="width: 100px; height: auto;"></a>
+                </div>
+        </section>
+</main>
+
+<footer class="footer">
+    <h4>&copy; 2024 Taxwithrohit. All rights reserved.</h4>
+    <h3>Contact Information</h3>
+    <p>Email: taxwithrohit@gmail.com</p>
+    <p>Phone: +91 9910737897</p>
+    <p>Address: K - 185, 5th Avenue, Gaur City 1, Sector - 4, Greater Noida West, U.P. - 201009</p>
+</footer>
+
+<script>
+    function toggleDropdown(element) {
+        element.parentNode.classList.toggle('open');
+    }
+
+    function callNow() {
+        window.location.href = "tel:+919910737897";
+    }
+
+    function chatNow() {
+        window.location.href = "https://wa.me/+919910737897"
+    }
+     
+</script>
+
+</body>
+</html>
